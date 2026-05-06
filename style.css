@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-repeat: no-repeat;
+    background-size: 10%;
+    background-color: #898989;
+}
+
+div{
+    background-color: #95773B;
+    height: 60px;
+}
