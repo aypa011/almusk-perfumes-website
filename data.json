@@ -1,0 +1,34 @@
+[
+    {
+        "id": "oud-majestic",
+        "title": "Oud Majestic",
+        "price": "$245.00",
+        "image": "assets/oud_majestic.png",
+        "notes": "Woody, Spicy, Amber",
+        "description": "A majestic blend of warm woody notes, rich spices, and glowing amber. This exquisite fragrance commands attention and leaves an unforgettable trail."
+    },
+    {
+        "id": "rose-musk",
+        "title": "Rose Musk",
+        "price": "$195.00",
+        "image": "assets/rose_musk.png",
+        "notes": "Floral, Musk, Vanilla",
+        "description": "A delicate and romantic composition featuring the finest roses intertwined with soft musk and warm vanilla, creating an aura of elegant femininity."
+    },
+    {
+        "id": "amber-nights",
+        "title": "Amber Nights",
+        "price": "$220.00",
+        "image": "assets/amber_nights.png",
+        "notes": "Amber, Patchouli, Oud",
+        "description": "An intoxicating nighttime fragrance that captures the mystery of the dark with intense amber, earthy patchouli, and a subtle touch of rare oud."
+    },
+    {
+        "id": "amber-nights",
+        "title": "Amber Nights",
+        "price": "$220.00",
+        "image": "assets/amber_nights.png",
+        "notes": "Amber, Patchouli, Oud",
+        "description": "An intoxicating nighttime fragrance that captures the mystery of the dark with intense amber, earthy patchouli, and a subtle touch of rare oud."
+    }
+]

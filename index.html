@@ -37,7 +37,8 @@
             </ul>
         </nav>
         <div class="nav-icons">
-            <a href="https://wa.me/8547011568" target="_blank" class="whatsapp-nav-icon" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://wa.me/8547011568" target="_blank" class="whatsapp-nav-icon" title="Chat on WhatsApp"><i
+                    class="fa-brands fa-whatsapp"></i></a>
             <div class="hamburger">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -67,48 +68,12 @@
                 <div class="divider"></div>
             </div>
 
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="assets/oud_majestic.png" alt="Oud Majestic Perfume">
-                        <div class="overlay">
-                            <a href="oud-majestic.html" class="btn secondary-btn">View Details</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Oud Majestic</h3>
-                        <p class="notes">Woody, Spicy, Amber</p>
-                        <p class="price">$245.00</p>
-                    </div>
-                </div>
+            <div id="product-grid" class="product-grid" data-limit="3">
+                <!-- Products will be dynamically loaded here from data.json -->
+            </div>
 
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="assets/rose_musk.png" alt="Rose Musk Perfume">
-                        <div class="overlay">
-                            <a href="rose-musk.html" class="btn secondary-btn">View Details</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Rose Musk</h3>
-                        <p class="notes">Floral, Musk, Vanilla</p>
-                        <p class="price">$195.00</p>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="assets/amber_nights.png" alt="Amber Nights Perfume">
-                        <div class="overlay">
-                            <a href="amber-nights.html" class="btn secondary-btn">View Details</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Amber Nights</h3>
-                        <p class="notes">Amber, Patchouli, Oud</p>
-                        <p class="price">$220.00</p>
-                    </div>
-                </div>
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="collections.html" class="btn outline-btn">Explore Full Collection</a>
             </div>
         </section>
 
@@ -120,13 +85,35 @@
                     precious ingredients to create olfactory masterpieces.</p>
                 <a href="#" class="btn outline-btn">Read Our Story</a>
             </div>
+        </section>
+
+        <!-- Product Modal -->
+        <div class="modal" id="productModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <div class="modal-image">
+                        <img src="" alt="Product Image" id="modalImg">
+                    </div>
+                    <div class="modal-details">
+                        <h2 id="modalTitle">Product Title</h2>
+                        <p class="notes" id="modalNotes">Notes</p>
+                        <p class="price" id="modalPrice">$0.00</p>
+                        <div class="divider" style="margin: 15px 0; width: 40px;"></div>
+                        <p class="description" id="modalDesc">Description goes here.</p>
+                        <a href="#" id="modalOrderBtn" target="_blank" class="btn primary-btn whatsapp-btn"><i
+                                class="fa-brands fa-whatsapp"></i> Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-brand">
-                <h2>AL MUSK</h2>
-                <p>Elegance in every drop.</p>
+                <h2>AL MUSK PERFUMES</h2>
+                <p>not just a fragrance, a signature</p>
                 <div class="social-links">
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -137,7 +124,7 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#collection">Shop</a></li>
+                    <li><a href="#collection">Collection</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>

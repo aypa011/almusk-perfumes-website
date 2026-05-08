@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amber Nights | Al Musk Perfumes</title>
+    <title>Our Collection | Al Musk Perfumes</title>
+    <meta name="description" content="Explore the full collection of luxury fragrances by Al Musk Perfumes.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .collection-page {
+            padding-top: 150px;
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -24,9 +33,9 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#collection">Collection</a></li>
+                <li><a href="collections.html">Collection</a></li>
                 <li><a href="index.html#about">About Us</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-icons">
@@ -38,32 +47,36 @@
             </div>
         </div>
     </header>
-    
-    <main class="product-page">
-        <div class="product-container">
-            <div class="product-gallery product-card">
-                <div class="product-img-wrapper">
-                    <img src="assets/amber_nights.png" alt="Amber Nights">
-                </div>
-            </div>
-            <div class="product-details">
-                <h1>Amber Nights</h1>
-                <p class="price">$220.00</p>
-                <div class="divider" style="margin: 0 0 20px 0; width: 40px;"></div>
-                <p class="description">An intoxicating nighttime fragrance that captures the mystery of the dark with intense amber, earthy patchouli, and a subtle touch of rare oud.</p>
-                
-                <div class="scent-pyramid">
-                    <h3>Scent Pyramid</h3>
-                    <ul>
-                        <li><strong>Top Notes:</strong> Cardamom, Black Pepper</li>
-                        <li><strong>Heart Notes:</strong> Rose, Incense</li>
-                        <li><strong>Base Notes:</strong> Amber, Patchouli, Sandalwood</li>
-                    </ul>
-                </div>
 
-                <div class="actions">
-                    <a href="https://wa.me/8547011568?text=Hello!%20I%20would%20like%20to%20order%20Amber%20Nights%20(%24220.00)." target="_blank" class="btn primary-btn whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
-                    <a href="index.html#collection" class="btn outline-btn">Back to Collection</a>
+    <main class="collection-page">
+        <section id="collection" class="products" style="padding-top: 0;">
+            <div class="section-header">
+                <h2>All Products</h2>
+                <div class="divider"></div>
+            </div>
+
+            <!-- No data-limit, so it will show all products -->
+            <div id="product-grid" class="product-grid">
+                <!-- Products will be dynamically loaded here from data.json -->
+            </div>
+        </section>
+
+        <!-- Product Modal -->
+        <div class="modal" id="productModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <div class="modal-image">
+                        <img src="" alt="Product Image" id="modalImg">
+                    </div>
+                    <div class="modal-details">
+                        <h2 id="modalTitle">Product Title</h2>
+                        <p class="notes" id="modalNotes">Notes</p>
+                        <p class="price" id="modalPrice">$0.00</p>
+                        <div class="divider" style="margin: 15px 0; width: 40px;"></div>
+                        <p class="description" id="modalDesc">Description goes here.</p>
+                        <a href="#" id="modalOrderBtn" target="_blank" class="btn primary-btn whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> Order Now</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,9 +97,9 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#collection">Shop</a></li>
+                    <li><a href="collections.html">Shop</a></li>
                     <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
