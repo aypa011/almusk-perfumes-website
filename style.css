@@ -115,10 +115,23 @@ ul {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between image and text */
+}
+
 .logo h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Slightly smaller to match the 50px image height nicely */
     color: var(--primary-gold);
     letter-spacing: 4px;
+    margin: 0;
+}
+
+.nav-logo {
+    max-height: 50px; /* Adjust height to fit the navbar nicely */
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-links {
