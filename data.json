@@ -24,9 +24,17 @@
         "description": "An intoxicating nighttime fragrance that captures the mystery of the dark with intense amber, earthy patchouli, and a subtle touch of rare oud."
     },
     {
-        "id": "amber-nights",
-        "title": "Amber Nights",
-        "price": "$220.00",
+        "id": "nights",
+        "title": "Nights",
+        "price": "$320.00",
+        "image": "assets/amber_nights.png",
+        "notes": "Amber, Patchouli, Oud",
+        "description": "An intoxicating nighttime fragrance that captures the mystery of the dark with intense amber, earthy patchouli, and a subtle touch of rare oud."
+    },
+    {
+        "id": "amber",
+        "title": "Amber",
+        "price": "$200.00",
         "image": "assets/amber_nights.png",
         "notes": "Amber, Patchouli, Oud",
         "description": "An intoxicating nighttime fragrance that captures the mystery of the dark with intense amber, earthy patchouli, and a subtle touch of rare oud."

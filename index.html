@@ -69,7 +69,7 @@
                 <div class="divider"></div>
             </div>
 
-            <div id="product-grid" class="product-grid" data-limit="3">
+            <div id="product-grid" class="product-grid" data-limit="4">
                 <!-- Products will be dynamically loaded here from data.json -->
             </div>
 
@@ -84,6 +84,21 @@
                 <p>At Al Musk, we believe that a fragrance is more than just a scent; it's a memory, an emotion, an
                     invisible aura that leaves a lasting impression. Our master perfumers meticulously blend rare and
                     precious ingredients to create olfactory masterpieces.</p>
+            </div>
+        </section>
+
+        <section id="feedback" class="feedback">
+            <div class="feedback-content">
+                <div class="section-header">
+                    <h2>Leave a Comment</h2>
+                    <div class="divider"></div>
+                </div>
+                <form action="https://formspree.io/almuskperfumes@gmail.com" method="POST" class="comment-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Comment..." rows="5" required></textarea>
+                    <button type="submit" class="btn primary-btn">Submit Comment</button>
+                </form>
             </div>
         </section>
 
