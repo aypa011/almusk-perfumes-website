@@ -3,13 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Musk Perfumes | Luxury Fragrances</title>
+    <meta name="description" content="Discover the essence of luxury with Al Musk Perfumes. Explore our exclusive collection of premium fragrances.">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>Al Musk Perfumes | not just a fragrance, a signature!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div><br>&nbsp;
-        Almusk Perfumes
-    </div>
+    <header class="navbar">
+        <div class="logo">
+            <h1>AL MUSK</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <span class="subtitle">The Essence of Luxury</span>
+                <h2>Discover Your Signature Scent</h2>
+                <p>Immerse yourself in a world of captivating fragrances crafted from the finest ingredients worldwide.</p>
+                <a href="#collection" class="btn primary-btn">Explore Collection</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/hero_perfume.png" alt="Luxury Perfume Bottle">
+                <div class="glow-effect"></div>
+            </div>
+        </section>
+
+        <section id="collection" class="products">
+            <div class="section-header">
+                <h2>Our Exclusive Collection</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/oud_majestic.png" alt="Oud Majestic Perfume">
+                        <div class="overlay">
+                            <button class="btn secondary-btn">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Oud Majestic</h3>
+                        <p class="notes">Woody, Spicy, Amber</p>
+                        <p class="price">$245.00</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/rose_musk.png" alt="Rose Musk Perfume">
+                        <div class="overlay">
+                            <button class="btn secondary-btn">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rose Musk</h3>
+                        <p class="notes">Floral, Musk, Vanilla</p>
+                        <p class="price">$195.00</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/amber_nights.png" alt="Amber Nights Perfume">
+                        <div class="overlay">
+                            <button class="btn secondary-btn">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Amber Nights</h3>
+                        <p class="notes">Amber, Patchouli, Oud</p>
+                        <p class="price">$220.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="about-content">
+                <h2>The Art of Perfumery</h2>
+                <p>At Al Musk, we believe that a fragrance is more than just a scent; it's a memory, an emotion, an invisible aura that leaves a lasting impression. Our master perfumers meticulously blend rare and precious ingredients to create olfactory masterpieces.</p>
+                <a href="#" class="btn outline-btn">Read Our Story</a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>AL MUSK</h2>
+                <p>Elegance in every drop.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collection">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@almuskperfumes.com</p>
+                <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Luxury Ave, New York, NY</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Al Musk Perfumes. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
