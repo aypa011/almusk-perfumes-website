@@ -17,6 +17,13 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="assets/almusklogo.png" alt="Al Musk Logo" class="loader-logo">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
     <header class="navbar">
         <div class="logo">
             <h1>AL MUSK PERFUMES</h1>
@@ -65,7 +72,7 @@
                     <div class="product-img-wrapper">
                         <img src="assets/oud_majestic.png" alt="Oud Majestic Perfume">
                         <div class="overlay">
-                            <button class="btn secondary-btn quick-view-btn" data-title="Oud Majestic" data-price="$245.00" data-notes="Woody, Spicy, Amber" data-desc="A majestic blend of warm woody notes, rich spices, and glowing amber. This exquisite fragrance commands attention and leaves an unforgettable trail." data-img="assets/oud_majestic.png">Quick View</button>
+                            <a href="oud-majestic.html" class="btn secondary-btn">View Details</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -79,7 +86,7 @@
                     <div class="product-img-wrapper">
                         <img src="assets/rose_musk.png" alt="Rose Musk Perfume">
                         <div class="overlay">
-                            <button class="btn secondary-btn quick-view-btn" data-title="Rose Musk" data-price="$195.00" data-notes="Floral, Musk, Vanilla" data-desc="A delicate and romantic composition featuring the finest roses intertwined with soft musk and warm vanilla, creating an aura of elegant femininity." data-img="assets/rose_musk.png">Quick View</button>
+                            <a href="rose-musk.html" class="btn secondary-btn">View Details</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -93,7 +100,7 @@
                     <div class="product-img-wrapper">
                         <img src="assets/amber_nights.png" alt="Amber Nights Perfume">
                         <div class="overlay">
-                            <button class="btn secondary-btn quick-view-btn" data-title="Amber Nights" data-price="$220.00" data-notes="Amber, Patchouli, Oud" data-desc="An intoxicating nighttime fragrance that captures the mystery of the dark with intense amber, earthy patchouli, and a subtle touch of rare oud." data-img="assets/amber_nights.png">Quick View</button>
+                            <a href="amber-nights.html" class="btn secondary-btn">View Details</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -113,27 +120,6 @@
                     precious ingredients to create olfactory masterpieces.</p>
                 <a href="#" class="btn outline-btn">Read Our Story</a>
             </div>
-        </section>
-
-        <!-- Product Modal -->
-        <div class="modal" id="productModal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <div class="modal-body">
-                    <div class="modal-image">
-                        <img src="" alt="Product Image" id="modalImg">
-                    </div>
-                    <div class="modal-details">
-                        <h2 id="modalTitle">Product Title</h2>
-                        <p class="notes" id="modalNotes">Notes</p>
-                        <p class="price" id="modalPrice">$0.00</p>
-                        <div class="divider" style="margin: 15px 0; width: 40px;"></div>
-                        <p class="description" id="modalDesc">Description goes here.</p>
-                        <a href="#" id="modalOrderBtn" target="_blank" class="btn primary-btn whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> Order Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
     <footer id="contact">

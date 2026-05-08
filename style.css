@@ -505,30 +505,6 @@ footer {
 
 /* Responsive */
 @media (max-width: 992px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 120px;
-    }
-    
-    .hero-content {
-        margin-bottom: 50px;
-    }
-    
-    .hero-content h2 {
-        font-size: 3.5rem;
-    }
-    
-    .hero-content p {
-        margin: 0 auto 40px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 768px) {
     .nav-links {
         position: fixed;
         top: 0;
@@ -562,7 +538,31 @@ footer {
     .hamburger.active .line:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
     }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
     
+    .hero-content {
+        margin-bottom: 50px;
+    }
+    
+    .hero-content h2 {
+        font-size: 3.5rem;
+    }
+    
+    .hero-content p {
+        margin: 0 auto 40px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
     .hero-content h2 {
         font-size: 2.5rem;
     }
@@ -572,121 +572,160 @@ footer {
     }
 }
 
-/* Modal Styles */
-.modal {
-    display: none;
+/* Preloader Styles */
+#preloader {
     position: fixed;
-    z-index: 2000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.modal.show {
+    background-color: var(--bg-color);
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.modal-content {
-    background-color: var(--surface-color);
-    border: 1px solid rgba(197, 160, 89, 0.3);
-    border-radius: 10px;
-    width: 90%;
-    max-width: 900px;
-    position: relative;
-    transform: translateY(-50px);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+.loader-content {
+    text-align: center;
 }
 
-.modal.show .modal-content {
-    transform: translateY(0);
+.loader-logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite ease-in-out;
 }
 
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: var(--text-muted);
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10;
-    transition: var(--transition);
+.loader-bar {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+    animation: loadBar 1.5s ease forwards;
 }
 
-.close-modal:hover {
-    color: var(--primary-gold);
+@keyframes loadBar {
+    0% { width: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { width: 200px; opacity: 0; }
 }
 
-.modal-body {
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.98); }
+}
+
+/* 3D Tilt Effect Utilities */
+.product-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    /* transition removed on hover to allow JS control */
+}
+
+.product-img-wrapper {
+    transform: translateZ(30px);
+}
+
+.product-info {
+    transform: translateZ(20px);
+}
+
+/* Dedicated Product Page Styles */
+.product-page {
+    padding: 150px 10% 100px;
+    min-height: 100vh;
+}
+
+.product-container {
     display: flex;
     flex-wrap: wrap;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.modal-image {
+.product-gallery {
     flex: 1;
     min-width: 300px;
-    background-color: var(--bg-color);
-    padding: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 70%);
+    padding: 40px;
+    border-radius: 10px;
 }
 
-.modal-image img {
+.product-gallery img {
     max-width: 100%;
-    max-height: 400px;
+    max-height: 500px;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    animation: float 6s ease-in-out infinite;
 }
 
-.modal-details {
+.product-details {
     flex: 1;
     min-width: 300px;
-    padding: 50px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.modal-details h2 {
-    font-size: 2.2rem;
+.product-details h1 {
+    font-size: 3rem;
     color: var(--primary-gold);
     margin-bottom: 10px;
 }
 
-.modal-details .notes {
-    color: var(--text-muted);
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-.modal-details .price {
-    font-size: 1.8rem;
+.product-details .price {
+    font-size: 2rem;
     font-family: var(--font-heading);
     color: #fff;
     margin-bottom: 20px;
 }
 
-.modal-details .description {
+.product-details .description {
     color: var(--text-main);
     line-height: 1.8;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.scent-pyramid {
+    background-color: var(--surface-color);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 40px;
+}
+
+.scent-pyramid h3 {
+    color: var(--secondary-gold);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.scent-pyramid ul li {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+}
+
+.scent-pyramid ul li strong {
+    color: var(--text-main);
+    display: inline-block;
+    width: 120px;
+}
+
+.product-details .actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .whatsapp-btn {
     background: #25D366; /* WhatsApp brand color */
     color: white;
-    text-align: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -696,19 +735,14 @@ footer {
 
 .whatsapp-btn:hover {
     background: #128C7E;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
     color: white;
 }
 
 @media (max-width: 768px) {
-    .modal-details {
-        padding: 30px 20px;
+    .product-page {
+        padding-top: 120px;
     }
-    .modal-image {
-        padding: 20px;
-    }
-    .modal-image img {
-        max-height: 250px;
+    .product-details h1 {
+        font-size: 2.2rem;
     }
 }

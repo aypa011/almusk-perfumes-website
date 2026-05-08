@@ -53,70 +53,37 @@ document.querySelectorAll('.product-card').forEach((card, index) => {
     observer.observe(card);
 });
 
-// Modal Logic
-const modal = document.getElementById('productModal');
-const closeModal = document.querySelector('.close-modal');
-const quickViewBtns = document.querySelectorAll('.quick-view-btn');
-
-// Modal Elements
-const modalImg = document.getElementById('modalImg');
-const modalTitle = document.getElementById('modalTitle');
-const modalNotes = document.getElementById('modalNotes');
-const modalPrice = document.getElementById('modalPrice');
-const modalDesc = document.getElementById('modalDesc');
-const modalOrderBtn = document.getElementById('modalOrderBtn');
-
-const whatsappNumber = "8547011568";
-
-if (quickViewBtns && modal) {
-    quickViewBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Get data from button
-            const title = btn.getAttribute('data-title');
-            const price = btn.getAttribute('data-price');
-            const notes = btn.getAttribute('data-notes');
-            const desc = btn.getAttribute('data-desc');
-            const img = btn.getAttribute('data-img');
-            
-            // Update modal content
-            modalTitle.textContent = title;
-            modalPrice.textContent = price;
-            modalNotes.textContent = notes;
-            modalDesc.textContent = desc;
-            modalImg.src = img;
-            
-            // Setup WhatsApp link
-            const message = `Hello! I would like to order the ${title} perfume (${price}).`;
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            modalOrderBtn.href = whatsappUrl;
-            
-            // Show modal
-            modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-    });
-
-    closeModal.addEventListener('click', () => {
-        modal.classList.remove('show');
+// Loader logic
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
         setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    });
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+        }, 800); // 800ms to allow the glitch logo animation to play a bit
+    }
+});
 
-    // Close modal when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('show');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
-            document.body.style.overflow = 'auto';
-        }
+// 3D Tilt Effect for Product Cards
+const cards = document.querySelectorAll('.product-card');
+cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate rotation based on cursor position
+        const tiltX = ((y - centerY) / centerY) * -15; // Max 15deg rotation
+        const tiltY = ((x - centerX) / centerX) * 15;
+        
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.transition = 'none'; // remove transition for smooth tracking
     });
-}
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transition = 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+});
