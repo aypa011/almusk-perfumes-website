@@ -75,36 +75,72 @@ function applyAnimationsAndTilt() {
     });
 }
 
-// Fetch dynamic products
+const EXCHANGE_RATES = {
+    'INR': { rate: 1, symbol: '₹' },
+    'USD': { rate: 0.012, symbol: '$' },
+    'AED': { rate: 0.044, symbol: 'د.إ ' },
+    'EUR': { rate: 0.011, symbol: '€' }
+};
+
+let currentCurrency = 'INR';
+
+function formatPrice(priceInINR) {
+    const currencyInfo = EXCHANGE_RATES[currentCurrency];
+    const convertedPrice = (priceInINR * currencyInfo.rate).toFixed(2);
+    // Remove .00 for INR for cleaner look, keep for others if desired, but we'll stick to .00 for luxury feel
+    return `${currencyInfo.symbol}${convertedPrice}`;
+}
+
+const currencySelectors = document.querySelectorAll('.currency-selector');
+currencySelectors.forEach(selector => {
+    selector.addEventListener('change', (e) => {
+        currentCurrency = e.target.value;
+        // sync all selectors
+        currencySelectors.forEach(s => s.value = currentCurrency);
+        renderProducts();
+    });
+});
+
+let allProducts = [];
 const productGrid = document.getElementById('product-grid');
+
+function renderProducts() {
+    if (!productGrid) return;
+    productGrid.innerHTML = ''; // clear existing
+    
+    const limit = productGrid.getAttribute('data-limit');
+    const productsToShow = limit ? allProducts.slice(0, parseInt(limit)) : allProducts;
+
+    productsToShow.forEach(product => {
+        const displayPrice = formatPrice(product.price);
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <div class="product-img-wrapper">
+                <img src="${product.image}" alt="${product.title}">
+                <div class="overlay">
+                    <button class="btn secondary-btn quick-view-btn" data-title="${product.title}" data-price="${displayPrice}" data-notes="${product.notes}" data-desc="${product.description}" data-img="${product.image}">View Details</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>${product.title}</h3>
+                <p class="notes">${product.notes}</p>
+                <p class="price">${displayPrice}</p>
+            </div>
+        `;
+        productGrid.appendChild(card);
+    });
+    
+    applyAnimationsAndTilt();
+    setupModal();
+}
+
 if (productGrid) {
     fetch('data.json')
         .then(response => response.json())
         .then(products => {
-            const limit = productGrid.getAttribute('data-limit');
-            const productsToShow = limit ? products.slice(0, parseInt(limit)) : products;
-
-            productsToShow.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-img-wrapper">
-                        <img src="${product.image}" alt="${product.title}">
-                        <div class="overlay">
-                            <button class="btn secondary-btn quick-view-btn" data-title="${product.title}" data-price="${product.price}" data-notes="${product.notes}" data-desc="${product.description}" data-img="${product.image}">View Details</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>${product.title}</h3>
-                        <p class="notes">${product.notes}</p>
-                        <p class="price">${product.price}</p>
-                    </div>
-                `;
-                productGrid.appendChild(card);
-            });
-            
-            applyAnimationsAndTilt();
-            setupModal();
+            allProducts = products;
+            renderProducts();
         })
         .catch(error => console.error('Error loading products:', error));
 }

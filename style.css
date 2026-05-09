@@ -165,6 +165,28 @@ ul {
     color: var(--primary-gold);
 }
 
+.currency-selector {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: var(--transition);
+}
+
+.currency-selector:hover, .currency-selector:focus {
+    border-color: var(--primary-gold);
+}
+
+.currency-selector option {
+    background: #050505; /* Match theme background */
+    color: var(--text-main);
+}
+
 .nav-icons {
     display: flex;
     gap: 20px;
