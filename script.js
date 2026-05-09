@@ -117,7 +117,7 @@ function renderProducts() {
         card.className = 'product-card';
         card.innerHTML = `
             <div class="product-img-wrapper">
-                <img src="${product.image}" alt="${product.title}">
+                <img src="${product.image}" alt="${product.title}" loading="lazy">
                 <div class="overlay">
                     <button class="btn secondary-btn quick-view-btn" data-title="${product.title}" data-price="${displayPrice}" data-notes="${product.notes}" data-desc="${product.description}" data-img="${product.image}">View Details</button>
                 </div>
