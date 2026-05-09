@@ -182,3 +182,53 @@ function setupModal() {
         });
     }
 }
+
+// Feedback Form AJAX Submission
+const feedbackForm = document.getElementById('feedback-form');
+if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = document.getElementById('feedback-submit-btn');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(feedbackForm);
+        
+        fetch(feedbackForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                submitBtn.textContent = 'Submitted Successfully!';
+                feedbackForm.reset();
+                setTimeout(() => {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                }, 3000); // Reset button after 3 seconds
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        submitBtn.textContent = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        submitBtn.textContent = 'Oops! There was a problem.';
+                    }
+                    setTimeout(() => {
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                });
+            }
+        }).catch(error => {
+            submitBtn.textContent = 'Oops! There was a problem.';
+            setTimeout(() => {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+    });
+}
