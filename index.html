@@ -39,12 +39,10 @@
             </ul>
         </nav>
         <div class="nav-icons">
-            <select id="currency-selector" class="currency-selector">
-                <option value="INR">INR (₹)</option>
-                <option value="USD">USD ($)</option>
-                <option value="AED">AED (د.إ)</option>
-                <option value="EUR">EUR (€)</option>
-            </select>
+            <a href="#" class="cart-trigger" id="cartTrigger" title="Shopping Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
             <a href="https://wa.me/8547011568" target="_blank" class="whatsapp-nav-icon" title="Chat on WhatsApp"><i
                     class="fa-brands fa-whatsapp"></i></a>
             <div class="hamburger">
@@ -162,6 +160,36 @@
             <p>&copy; 2026 Al Musk Perfumes. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Gold Dust Particle Canvas -->
+    <canvas id="gold-dust-canvas"></canvas>
+
+    <!-- Shopping Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-body" id="cartItemsContainer">
+            <!-- Dynamic Cart Items loaded from localStorage -->
+            <div class="empty-cart-message">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <p>Your cart is empty.</p>
+                <a href="#collection" class="btn primary-btn close-cart-btn">Explore Collection</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <button id="whatsappCheckoutBtn" class="btn primary-btn whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
+            </button>
+            <button id="clearCartBtn" class="btn outline-btn clear-cart-btn">Clear Cart</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
