@@ -341,9 +341,7 @@ function addToCart(productId, quantity = 1) {
             notes: product.notes,
             quantity: quantity
         });
-    }
     saveCart();
-    openCartDrawer();
 }
 
 function updateQuantity(productId, newQty) {
