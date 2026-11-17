@@ -166,16 +166,21 @@ function renderProducts() {
     setupModal();
 }
 
-// Loader logic
-window.addEventListener('load', () => {
+// Loader logic - hide preloader when page loads, with a fallback timeout
+function hidePreloader() {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
+    if (preloader && preloader.style.visibility !== 'hidden') {
         setTimeout(() => {
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
         }, 800);
     }
-});
+}
+
+window.addEventListener('load', hidePreloader);
+
+// Fallback: force-hide preloader after 4 seconds even if 'load' never fires
+setTimeout(hidePreloader, 4000);
 
 // Setup modal details and custom cart click injection
 function setupModal() {
@@ -341,6 +346,7 @@ function addToCart(productId, quantity = 1) {
             notes: product.notes,
             quantity: quantity
         });
+    }
     saveCart();
 }
 

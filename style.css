@@ -678,11 +678,15 @@ footer {
     width: 100%;
     height: 100%;
     background-color: var(--bg-color);
-    z-index: 9999;
+    z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#preloader[style*="hidden"] {
+    pointer-events: none;
 }
 
 .loader-content {
