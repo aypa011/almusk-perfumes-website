@@ -52,7 +52,7 @@ function applyAnimationsAndTilt() {
         card.style.transform = 'translateY(30px)';
         card.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
         observer.observe(card);
-        
+
         // 3D Tilt Effect
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
@@ -60,14 +60,14 @@ function applyAnimationsAndTilt() {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
-            const tiltX = ((y - centerY) / centerY) * -15; 
+
+            const tiltX = ((y - centerY) / centerY) * -15;
             const tiltY = ((x - centerX) / centerX) * 15;
-            
+
             card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
-            card.style.transition = 'none'; 
+            card.style.transition = 'none';
         });
-        
+
         card.addEventListener('mouseleave', () => {
             card.style.transition = 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
@@ -91,23 +91,23 @@ let currentSort = 'default';
 function renderProducts() {
     if (!productGrid) return;
     productGrid.innerHTML = '';
-    
+
     let filtered = [...allProducts];
-    
+
     // 1. Filter by category notes tag
     if (activeFilter !== 'all') {
         filtered = filtered.filter(p => p.notes.toLowerCase().includes(activeFilter));
     }
-    
+
     // 2. Filter by search input
     if (searchQuery) {
-        filtered = filtered.filter(p => 
+        filtered = filtered.filter(p =>
             p.title.toLowerCase().includes(searchQuery) ||
             p.notes.toLowerCase().includes(searchQuery) ||
             p.description.toLowerCase().includes(searchQuery)
         );
     }
-    
+
     // 3. Sort products
     if (currentSort === 'price-low') {
         filtered.sort((a, b) => a.price - b.price);
@@ -118,10 +118,10 @@ function renderProducts() {
     } else if (currentSort === 'name-za') {
         filtered.sort((a, b) => b.title.localeCompare(a.title));
     }
-    
+
     const limit = productGrid.getAttribute('data-limit');
     const productsToShow = limit ? filtered.slice(0, parseInt(limit)) : filtered;
-    
+
     if (productsToShow.length === 0) {
         productGrid.innerHTML = `
             <div class="no-products-found" style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--text-muted);">
@@ -131,7 +131,7 @@ function renderProducts() {
         `;
         return;
     }
-    
+
     productsToShow.forEach(product => {
         const displayPrice = formatPrice(product.price);
         const card = document.createElement('div');
@@ -152,7 +152,7 @@ function renderProducts() {
         `;
         productGrid.appendChild(card);
     });
-    
+
     // Bind quick add to cart buttons
     document.querySelectorAll('.quick-cart-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -161,7 +161,7 @@ function renderProducts() {
             addToCart(id);
         });
     });
-    
+
     applyAnimationsAndTilt();
     setupModal();
 }
@@ -199,28 +199,28 @@ function setupModal() {
         quickViewBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                
+
                 const id = btn.getAttribute('data-id');
                 const title = btn.getAttribute('data-title');
                 const price = btn.getAttribute('data-price');
                 const notes = btn.getAttribute('data-notes');
                 const desc = btn.getAttribute('data-desc');
                 const img = btn.getAttribute('data-img');
-                
+
                 modalTitle.textContent = title;
                 modalPrice.textContent = price;
                 modalNotes.textContent = notes;
                 modalDesc.textContent = desc;
                 modalImg.src = img;
-                
+
                 // Inject Add-to-Cart logic dynamically to the modal button
                 if (modalOrderBtn) {
                     modalOrderBtn.innerHTML = '<i class="fa-solid fa-bag-shopping"></i> Add to Cart';
                     modalOrderBtn.removeAttribute('target');
-                    
+
                     const newOrderBtn = modalOrderBtn.cloneNode(true);
                     modalOrderBtn.parentNode.replaceChild(newOrderBtn, modalOrderBtn);
-                    
+
                     newOrderBtn.addEventListener('click', (ev) => {
                         ev.preventDefault();
                         addToCart(id);
@@ -231,12 +231,12 @@ function setupModal() {
                         document.body.style.overflow = 'auto';
                     });
                 }
-                
+
                 modal.style.display = 'flex';
                 setTimeout(() => {
                     modal.classList.add('show');
                 }, 10);
-                document.body.style.overflow = 'hidden'; 
+                document.body.style.overflow = 'hidden';
             });
         });
 
@@ -246,7 +246,7 @@ function setupModal() {
                 setTimeout(() => {
                     modal.style.display = 'none';
                 }, 300);
-                document.body.style.overflow = 'auto'; 
+                document.body.style.overflow = 'auto';
             });
         }
 
@@ -265,16 +265,16 @@ function setupModal() {
 // Feedback Form AJAX Submission
 const feedbackForm = document.getElementById('feedback-form');
 if (feedbackForm) {
-    feedbackForm.addEventListener('submit', function(e) {
+    feedbackForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         const submitBtn = document.getElementById('feedback-submit-btn');
         const originalBtnText = submitBtn.textContent;
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
 
         const formData = new FormData(feedbackForm);
-        
+
         fetch(feedbackForm.action, {
             method: 'POST',
             body: formData,
@@ -333,7 +333,7 @@ function saveCart() {
 function addToCart(productId, quantity = 1) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
-    
+
     const existing = cart.find(item => item.id === productId);
     if (existing) {
         existing.quantity += quantity;
@@ -409,13 +409,13 @@ document.addEventListener('click', (e) => {
 
 function updateCartUI() {
     if (!cartItemsContainer) return;
-    
+
     const totalItems = getCartItemsCount();
     if (cartBadge) {
         cartBadge.textContent = totalItems;
         cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
     }
-    
+
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = `
             <div class="empty-cart-message">
@@ -429,12 +429,12 @@ function updateCartUI() {
         if (clearCartBtn) clearCartBtn.style.display = 'none';
         return;
     }
-    
+
     if (whatsappCheckoutBtn) whatsappCheckoutBtn.disabled = false;
     if (clearCartBtn) clearCartBtn.style.display = 'block';
-    
+
     cartItemsContainer.innerHTML = '';
-    
+
     cart.forEach(item => {
         const itemEl = document.createElement('div');
         itemEl.className = 'cart-item';
@@ -460,9 +460,9 @@ function updateCartUI() {
         `;
         cartItemsContainer.appendChild(itemEl);
     });
-    
+
     if (cartSubtotalEl) cartSubtotalEl.textContent = formatPrice(getCartSubtotal());
-    
+
     // Bind quantity increment, decrement, and delete buttons
     cartItemsContainer.querySelectorAll('.remove-cart-item').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -470,7 +470,7 @@ function updateCartUI() {
             removeFromCart(id);
         });
     });
-    
+
     cartItemsContainer.querySelectorAll('.inc-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = btn.getAttribute('data-id');
@@ -478,7 +478,7 @@ function updateCartUI() {
             if (item) updateQuantity(id, item.quantity + 1);
         });
     });
-    
+
     cartItemsContainer.querySelectorAll('.dec-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = btn.getAttribute('data-id');
@@ -490,15 +490,15 @@ function updateCartUI() {
 
 function checkoutWhatsApp() {
     if (cart.length === 0) return;
-    const whatsappNumber = "8547011568";
-    
+    const whatsappNumber = "+918547011568";
+
     let message = "Hello Al Musk Perfumes! I would like to place an order:\n\n";
     cart.forEach((item, index) => {
         message += `${index + 1}. *${item.title}* - ${item.quantity}x (${formatPrice(item.price)} each)\n`;
     });
     message += `\n*Total Amount:* ${formatPrice(getCartSubtotal())}\n\n`;
     message += "Please confirm availability and share payment and shipping instructions. Thank you!";
-    
+
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
@@ -554,14 +554,14 @@ const canvas = document.getElementById('gold-dust-canvas');
 if (canvas) {
     const ctx = canvas.getContext('2d');
     let particles = [];
-    
+
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-    
+
     class Particle {
         constructor(x, y) {
             this.x = x;
@@ -573,14 +573,14 @@ if (canvas) {
             this.alpha = 1;
             this.decay = Math.random() * 0.015 + 0.01;
         }
-        
+
         update() {
             this.x += this.vx;
             this.y += this.vy;
             this.alpha -= this.decay;
             if (this.size > 0.1) this.size -= 0.02;
         }
-        
+
         draw() {
             ctx.save();
             ctx.globalAlpha = this.alpha;
@@ -593,41 +593,41 @@ if (canvas) {
             ctx.restore();
         }
     }
-    
+
     let lastX = null;
     let lastY = null;
     let isTouch = false;
-    
+
     window.addEventListener('touchstart', () => { isTouch = true; });
-    
+
     window.addEventListener('mousemove', (e) => {
         if (isTouch) return;
-        
+
         const dist = lastX !== null ? Math.hypot(e.clientX - lastX, e.clientY - lastY) : 0;
         const spawnCount = Math.min(Math.floor(dist / 5), 4) + 1;
-        
+
         for (let i = 0; i < spawnCount; i++) {
             const offsetX = (Math.random() - 0.5) * 6;
             const offsetY = (Math.random() - 0.5) * 6;
             particles.push(new Particle(e.clientX + offsetX, e.clientY + offsetY));
         }
-        
+
         lastX = e.clientX;
         lastY = e.clientY;
     });
-    
+
     function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         for (let i = particles.length - 1; i >= 0; i--) {
             particles[i].update();
             particles[i].draw();
-            
+
             if (particles[i].alpha <= 0) {
                 particles.splice(i, 1);
             }
         }
-        
+
         requestAnimationFrame(animateParticles);
     }
     animateParticles();
